@@ -8,7 +8,11 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
+alipay = cv2.imread(r"C:\Users\Administrator\PycharmProjects\learn\Camera\1588918587421.jpg")
+alipay = cv2.resize(alipay, (512, 512))
 img = cv2.imread(r'lena1.jpeg')  # 读取图像
+img2 = img + 10
+img2 = cv2.resize(img2, (0, 0), fx=3, fy=1 )
 # alipay = img[0:1080, 0:1680]  # ROI:保留你感兴趣的区域,W:1080  H:1680
 b, g, r = cv2.split(img)
 cur_img = img.copy()
@@ -55,8 +59,17 @@ if __name__ == '__main__':  # 这里是主函数(main),所有函数在这里调�
     # cv_show('B', cur_img)
     # cv_show('G', cur_img)
     # cv_show('R', cur_img)
-    cv_show("lena", reflect)
+    cv_show("lena", img2)
     # cv_ShowVideo()
     # print(b.shape)
     # print(g.shape)
     # print(r.shape)
+    # print(img.shape)
+    # print(alipay.shape)
+    # print("img:\n", img[:5,:, 0])
+    # print("img2:\n", img2[:5, :, 0])
+    # print("alipay:\n", alipay[:5, :, 0])
+    # print((img + img2)[:5, :, 0])
+    # cv_show("alipay", alipay)
+    # cv_show("alipay", alipay + img)
+    # print("alipay + img:\n", (alipay + img)[:5, :, 0])
