@@ -18,7 +18,7 @@ b, g, r = cv2.split(img)
 cur_img = img.copy()
 cur_img[:, :, 1] = 0  # R:0, 1    G:0, 2   B:1, 2
 cur_img[:, :, 2] = 0
-video = cv2.VideoCapture('D:\恢复\\FILE0080.MOV')  # 读取视频
+
 top_size, bottom_size, left_size, right_size = [50, 50, 50, 50]     # 边界填充
 replicate = cv2.copyMakeBorder(img, top_size, bottom_size, left_size, right_size, borderType=cv2.BORDER_REPLICATE)
 reflect = cv2.copyMakeBorder(img, top_size, bottom_size, left_size, right_size, borderType=cv2.BORDER_REFLECT)
@@ -37,7 +37,7 @@ def cv_write(name):  # 重命名照片函数
     cv2.imwrite(name, img)
 
 
-def cv_ShowVideo():  # 播放视频函数
+def cv_ShowVideo(video):  # 播放视频函数
     if video.isOpened():    # 判断视频是否打开
         open, frame = video.read()
     else:
@@ -59,8 +59,10 @@ if __name__ == '__main__':  # 这里是主函数(main),所有函数在这里调�
     # cv_show('B', cur_img)
     # cv_show('G', cur_img)
     # cv_show('R', cur_img)
-    cv_show("lena", img2)
-    # cv_ShowVideo()
+    # cv_show("lena", img2)
+    videopath = input("视频路径:")
+    video = cv2.VideoCapture(videopath)  # 读取视频
+    cv_ShowVideo(video)
     # print(b.shape)
     # print(g.shape)
     # print(r.shape)
