@@ -8,8 +8,8 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
-alipay = cv2.imread(r"C:\Users\Administrator\PycharmProjects\learn\Camera\1588918587421.jpg")
-alipay = cv2.resize(alipay, (512, 512))
+# alipay = cv2.imread(r"C:\Users\Administrator\PycharmProjects\learn\Camera\1588918587421.jpg")
+# alipay = cv2.resize(alipay, (512, 512))
 img = cv2.imread(r'lena1.jpeg')  # 读取图像
 img2 = img + 10
 img2 = cv2.resize(img2, (0, 0), fx=3, fy=1 )
@@ -53,14 +53,15 @@ def cv_ShowVideo():  # 播放视频函数
                 break
     video.release()
     cv2.destroyAllWindows()
+    print("Play Over!")
 
 
 if __name__ == '__main__':  # 这里是主函数(main),所有函数在这里调用执行.
     # cv_show('B', cur_img)
     # cv_show('G', cur_img)
     # cv_show('R', cur_img)
-    cv_show("lena", img2)
-    # cv_ShowVideo()
+    # cv_show("lena", img2)
+    cv_ShowVideo()
     # print(b.shape)
     # print(g.shape)
     # print(r.shape)
