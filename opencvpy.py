@@ -48,7 +48,10 @@ def cv_ShowVideo():  # 播放视频函数
             break
         if ret == True:
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # 解析帧,和修改颜色
-            cv2.imshow('result', gray)
+            ret, th1 = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+            th2 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
+            th3 = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+            cv2.imshow('result', th3)
             if cv2.waitKey(25) & 0xFF == 27:    # waitkey里的参数为帧数率
                 break
     video.release()
