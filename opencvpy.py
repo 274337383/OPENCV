@@ -34,6 +34,13 @@ def cv_show(name, img):  # 显示图像的函数
     cv2.destroyAllWindows()
 
 
+def cv_blur():
+    blur = cv2.medianBlur(imgnoise, 7)
+    cv2.imshow('blur', blur)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
 def cv_write(name):  # 重命名照片函数
     cv2.imwrite(name, img)
 
@@ -60,12 +67,33 @@ def cv_ShowVideo():  # 播放视频函数
     print("Play Over!")
 
 
+def cv_blurVideo(name):
+    if video.isOpened():
+        open, frame = video.read()
+    else:
+        open = False
+    while open:
+        ret, frame = video.read()
+        if frame is None:
+            break
+        if ret == True:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            blurFrame = cv2.blur(gray, (3, 3))
+            cv2.imshow(name, blurFrame)
+            if cv2.waitKey(25) & 0xFF == 27:
+                break
+    video.release()
+    cv2.destroyAllWindows()
+    print("Play Over!")
+
+
 if __name__ == '__main__':  # 这里是主函数(main),所有函数在这里调用执行.
     # cv_show('B', cur_img)
     # cv_show('G', cur_img)
     # cv_show('R', cur_img)
-    # cv_show("lena", img)
-    cv_ShowVideo()
+    # cv_show("lenaNoise", imgnoise)
+    # cv_ShowVideo()
+    cv_blurVideo("blurVideo")
     # print(b.shape)
     # print(g.shape)
     # print(r.shape)
@@ -78,3 +106,4 @@ if __name__ == '__main__':  # 这里是主函数(main),所有函数在这里调�
     # cv_show("alipay", alipay)
     # cv_show("alipay", alipay + img)
     # print("alipay + img:\n", (alipay + img)[:5, :, 0])
+    # cv_blur()
