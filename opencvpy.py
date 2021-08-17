@@ -94,6 +94,7 @@ if __name__ == '__main__':  # 这里是主函数(main),所有函数在这里调�
     # cv_show("lenaNoise", imgnoise)
     # cv_ShowVideo()
     cv_blurVideo("blurVideo")
+    # cv_blur()
     # print(b.shape)
     # print(g.shape)
     # print(r.shape)
@@ -106,4 +107,3 @@ if __name__ == '__main__':  # 这里是主函数(main),所有函数在这里调�
     # cv_show("alipay", alipay)
     # cv_show("alipay", alipay + img)
     # print("alipay + img:\n", (alipay + img)[:5, :, 0])
-    # cv_blur()
